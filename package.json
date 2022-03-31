@@ -1,0 +1,33 @@
+{
+  "name": "baaka",
+  "version": "1.0.0",
+  "description": "Baaka stack",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jelmond/Baaka.git"
+  },
+  "keywords": [
+    "react",
+    "baaka"
+  ],
+  "author": "Anton Soloviov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jelmond/Baaka/issues"
+  },
+  "homepage": "https://github.com/Jelmond/Baaka#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.17.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
