@@ -1,10 +1,10 @@
 const {Router} = require('express');
 const bcrypt = require('bcryptjs');
 const router = Router();
-const config = require('config')
+const config = require("config")
 const jwt = require('jsonwebtoken') 
 const {check, validationResult} = require('express-validator')
-const User = require('./users'); //правильный путь
+// const User = require('./users'); //правильный путь
 
 
 router.post(
@@ -23,24 +23,24 @@ router.post(
         })
         }
         
-        const {name, login, password, email} = req.body
+        // const {name, login, password, email} = req.body
 
-        const candidate = await User.findOne({login: login})
+        // const candidate = await User.findOne({login: login})
         
-        if (candidate) {
-            res.status(400).json({message:'The User is already exist'})
-        }
+        // if (candidate) {
+        //     res.status(400).json({message:'The User is already exist'})
+        // }
 
-        const hasedPassword = await bcrypt.hash(password, 12)
+    //     const hasedPassword = await bcrypt.hash(password, 12)
 
-        await User.create({
-            name: name,
-            login: login,
-            email: email,
-            password_hash: hasedPassword,
-        });
+    //     await User.create({
+    //         name: name,
+    //         login: login,
+    //         email: email,
+    //         password_hash: hasedPassword,
+    //     });
 
-        res.status(201).json({message: "User has been created"})
+    //     res.status(201).json({message: "User has been created"})
 
 
     } catch (e) {

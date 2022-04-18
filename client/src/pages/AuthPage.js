@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { useHttp } from "../hooks/http.hook.js";
+import { useHttp } from "../hooks/http.hook";
 
 export const AuthPage = () => {
     const {loading, request} = useHttp()

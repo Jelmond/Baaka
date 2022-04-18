@@ -1,4 +1,9 @@
-import { sequelize } from './db/connection'
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize('rates', 'root', '', {
+    dialect: 'mysql',
+    host: 'localhost',
+});
 
 const express = require('express')
 const config = require('config')
@@ -24,6 +29,6 @@ async function start() {
         console.error('Unable to connect to the database:', error.message);
         process.exit(1)
       }
-};
+};  
 
 start()

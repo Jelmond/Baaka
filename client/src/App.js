@@ -1,5 +1,5 @@
 import React from 'react'
-import {useRoutes} from './routes.js'
+import {useRoutes} from './routes'
 import 'materialize-css'
 
 function App() {
