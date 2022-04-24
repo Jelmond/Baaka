@@ -1,12 +1,18 @@
 import React from 'react'
-import {useRoutes} from './routes'
 import 'materialize-css'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import LinksPage from "./pages/LinksPage"
+import AuthPage from "./pages/AuthPage"
 
 function App() {
-  const routes = useRoutes(false)
   return (
       <div className = 'container'>
-        {routes}
+         <BrowserRouter>
+                <Routes>
+                    <Route path="/links" exact element={<LinksPage/>}/>
+                    <Route path = "/" exact element={<AuthPage />}/>
+                </Routes>
+            </BrowserRouter>
       </div>
   );
 }

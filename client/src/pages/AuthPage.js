@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useHttp } from "../hooks/http.hook";
 
-export const AuthPage = () => {
+const AuthPage = () => {
     const {loading, request} = useHttp()
     const [form, setForm] = useState({
         email: '', password: ''
@@ -69,3 +69,5 @@ export const AuthPage = () => {
             </div>
     )
 }
+
+export default AuthPage
