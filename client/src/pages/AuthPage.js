@@ -11,12 +11,11 @@ const AuthPage = () => {
         setForm({...form, [event.target.name]: event.target.value })
     }
 
-    const registerHandler = async () => {
+    const registerHandler = async () => { //event
+        // console.log({...form, [event.target.name]: event.target.value })
         try{
-            const data = await request('/api/auth/register', 
-            'POST',
-             {...form})
-             console.log('darova')
+            const data = await request('/api/auth/register', 'POST', {...form}) 
+             console.log('darova', data)
         } catch(e) {}
     }
 
@@ -38,7 +37,7 @@ const AuthPage = () => {
                                     name="email"
                                     onChange={changeHandler}
                                 />
-                                <label htmlFor="first_name">Email</label>
+                                <label htmlFor="email">Email</label>
                             </div>
                             <div className="input-field">
                                 <input 
@@ -48,7 +47,7 @@ const AuthPage = () => {
                                     name="password"
                                     onChange={changeHandler}
                                 />
-                                <label htmlFor="first_name">Пароль</label>
+                                <label htmlFor="email">Пароль</label>
                             </div>
 
                             </div>
