@@ -1,11 +1,12 @@
 const {Router} = require('express');
 const bcrypt = require('bcryptjs');
 const router = Router();
-const config = require("config")
-const jwt = require('jsonwebtoken') 
-const {check, validationResult} = require('express-validator')
-// const User = require('./users'); //правильный путь
-
+const config = require("config");
+const jwt = require('jsonwebtoken');
+const {check, validationResult} = require('express-validator');
+// const { user } = require('../app');
+const {User} = require('../db/index')
+const Sequelize = require('sequelize')
 
 router.post(
     '/register',
@@ -27,7 +28,9 @@ router.post(
         
         const {name, login, password, email} = req.body
 
-        const candidate = await User.findOne({login: login})
+        console.log(User)
+
+        const candidate = await User.findOne({Where: {Email: email}}) 
         
         if (candidate) {
             res.status(400).json({message:'The User is already exist'})
@@ -36,17 +39,17 @@ router.post(
         const hasedPassword = await bcrypt.hash(password, 12)
 
         await User.create({
-            name: name,
-            login: login,
-            email: email,
-            password_hash: hasedPassword,
+            // name: name,
+            // Login: login,
+            Email: email,
+            Password: hasedPassword,    
         });
 
         res.status(201).json({message: "User has been created"})
 
 
     } catch (e) {
-        res.status(500).json({message: 'Something went wrong'})
+        res.status(500).json({message: 'Something went wrong -_-' + e.message})
     }
 });
 
@@ -70,7 +73,7 @@ router.post(
         
         const {email, password} = req.body
 
-        const user = await User.findOne({email})
+        const user = await User.findOne({Email: email})
 
         if(!user) {
             return res.status(400).json({message: 'There are no such user'})

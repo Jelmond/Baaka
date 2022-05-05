@@ -1,9 +1,16 @@
-const Sequelize = require('sequelize');
+// const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('rates', 'root', '', {
-    dialect: 'mysql',
-    host: 'localhost',
-});
+// const sequelize = new Sequelize('rates', 'root', '', {
+//     dialect: 'mysql',
+//     host: 'localhost',
+// });
+
+// const Users = require('./users')(sequelize);
+const {sequelize} = require('./db/index')
+const {User} = require('./db/index')
+
+console.log(User)
+
 
 const express = require('express')
 const config = require('config')
@@ -32,3 +39,8 @@ async function start() {
 };  
 
 start()
+
+// module.exports = {
+//   sequelize: sequelize,
+//   users: Users
+// }
