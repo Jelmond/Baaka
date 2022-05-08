@@ -1,8 +1,12 @@
+import { Children, createContext } from "react";
 import { useState, useCallback, useEffect } from "react"
 
 const storageName = 'userData'
 
-export const useAuth = () => {
+export const AuthContext = createContext()
+
+const AuthContextProvider = ({children}) => {
+
     const [token, setToken] = useState(null);
     const [userId, setUserId] = useState(null);
 
@@ -10,6 +14,8 @@ export const useAuth = () => {
     const login = useCallback((jwtToken, id) => {
         setToken(jwtToken)
         setUserId(id)
+        
+        console.log(jwtToken, id)
 
         localStorage.setItem(storageName, JSON.stringify({userId: id, token: jwtToken}))
     }, [])
@@ -28,5 +34,9 @@ export const useAuth = () => {
         }
     }, [login])
 
-    return {login, logout, token, userId}
+    const value = {login, logout, userId, token}
+
+    return (<AuthContext.Provider value = {value}>{children}</AuthContext.Provider>)
 }
+
+export default AuthContextProvider

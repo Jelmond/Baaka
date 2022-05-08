@@ -30,10 +30,12 @@ router.post(
 
         console.log(User)
 
+
         const candidate = await User.findOne({Where: {Email: email}}) 
+        console.log(candidate)
         
         if (candidate) {
-            res.status(400).json({message:'The User is already exist'})
+            return res.status(400).json({message:'The User is already exist'})
         }
 
         const hasedPassword = await bcrypt.hash(password, 12)
@@ -49,7 +51,7 @@ router.post(
 
 
     } catch (e) {
-        res.status(500).json({message: 'Something went wrong -_-' + e.message})
+        res.status(500).json({message: 'Something went wrong -_-'})
     }
 });
 
@@ -73,25 +75,34 @@ router.post(
         
         const {email, password} = req.body
 
-        const user = await User.findOne({Email: email})
+        const user = await User.findOne({Where: {Email: email}})
+
+
+        // console.log(user.dataValues.Password)
+        // console.log(password)
+        
 
         if(!user) {
             return res.status(400).json({message: 'There are no such user'})
         }
 
-        const isMatch = await bcrypt.compare(password, user.password)
+        const isMatch = await bcrypt.compare(password, user.dataValues.Password)
+
+        // console.log(isMatch)
+
 
         if(!isMatch) {
             return res.status(400).json({message: 'The password is not correct'})
         }
 
         const token = jwt.sign(
-            {userId: user.id},
+            {userId: user.dataValues.id},
             config.get('jwtSecret'),
             {expiresIn: '1h'}
         )
 
-        res.json({token, userId: user.id})
+
+        res.json({token, userId: user.dataValues.id})
        
 
     } catch (e) {

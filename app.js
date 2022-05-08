@@ -9,7 +9,6 @@
 const {sequelize} = require('./db/index')
 const {User} = require('./db/index')
 
-console.log(User)
 
 
 const express = require('express')
