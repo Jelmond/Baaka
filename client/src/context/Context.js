@@ -1,11 +1,16 @@
 import { Children, createContext } from "react";
 import { useState, useCallback, useEffect } from "react"
+import {useDispatch, useSelector} from 'react-redux'
+import { authenticationStatus, authentication } from "../app/IsAuthenticatedAction";
 
 const storageName = 'userData'
 
 export const AuthContext = createContext()
 
 const AuthContextProvider = ({children}) => {
+
+    const authStatus = useSelector(authenticationStatus)
+    const dispatch = useDispatch()
 
     const [token, setToken] = useState(null);
     const [userId, setUserId] = useState(null);
@@ -14,8 +19,9 @@ const AuthContextProvider = ({children}) => {
     const login = useCallback((jwtToken, id) => {
         setToken(jwtToken)
         setUserId(id)
-        
-        console.log(jwtToken, id)
+
+        dispatch(authentication())
+    
 
         localStorage.setItem(storageName, JSON.stringify({userId: id, token: jwtToken}))
     }, [])
@@ -33,8 +39,12 @@ const AuthContextProvider = ({children}) => {
             login(data.token, data.userId)
         }
     }, [login])
+    
+
 
     const value = {login, logout, userId, token}
+
+
 
     return (<AuthContext.Provider value = {value}>{children}</AuthContext.Provider>)
 }

@@ -20,6 +20,10 @@ const AuthPage = () => {
         setForm({...form, [event.target.name]: event.target.value })
     }
 
+    useEffect(() => {
+        window.M.updateTextFields()
+    }, [])
+
     const registerHandler = async () => { //event
         // console.log({...form, [event.target.name]: event.target.value })
         try{
