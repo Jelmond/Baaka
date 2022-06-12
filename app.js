@@ -11,6 +11,7 @@ const {User} = require('./db/index')
 
 
 
+
 const express = require('express')
 const config = require('config')
 
@@ -36,6 +37,9 @@ async function start() {
         process.exit(1)
       }
 };  
+
+
+
 
 start()
 

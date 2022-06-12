@@ -75,7 +75,8 @@ router.post(
         
         const {email, password} = req.body
 
-        const user = await User.findOne({Where: {Email: email}})
+        const user = await User.findOne({where: {Email: email}}) //Хуета с регистром бугвы w в where
+        console.log(user)
 
 
         // console.log(user.dataValues.Password)
