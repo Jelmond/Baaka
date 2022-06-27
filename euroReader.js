@@ -104,11 +104,12 @@
 
 
 
-
+const {Router} = require('express');
+const router = Router();
 const fetch = require('node-fetch');
 const cron = require('node-cron');
 const {Currencies} = require('./db/index');
-const {Rates} = require('./db/index')
+const {Rates} = require('./db/index');
 
 
 
@@ -142,15 +143,13 @@ async function getCurrencyEuro(){
 
 
 cron.schedule('3 19 * * *', () => {
-    console.log('hi')
+    console.log('Cron ')
     getCurrencyRub()
     getCurrencyEuro()
     getCurrencyUSD()
 });
 
-// getCurrencyRub()
-// getCurrencyEuro()
-// getCurrencyUSD()
+
 
 
 
@@ -159,14 +158,10 @@ cron.schedule('3 19 * * *', () => {
 
 
 async function writeToDb(data) {
-    // console.log(data);
 
-    // console.log(data.Cur_ID)
 
     const Currency_id = await Currencies.findOne({where: {Currency_key: data.Cur_ID}})
-    // console.log(Currency_id)
-    // console.log(Currency_id.id) 
-    // console.log(Currency_id.dataValues.Currency_key)
+
 
     Rates.create({
         id_Currencies: Currency_id.id,
@@ -182,3 +177,58 @@ async function writeToDb(data) {
         //     response.end('error')
         // })
 }
+
+
+
+router.get(
+    '/RUB/graphic',
+    async (req, res) => {
+        try {
+            
+            const RUB = await Rates.findAll({ where: {id_Currencies: 3}, limit: 10})
+            
+
+            res.json(RUB)
+            
+
+        } catch(e) {
+            res.status(500).json({message: "Something went wrong"})
+
+        }
+    })
+
+router.get(
+    '/EUR/graphic',
+    async (req, res) => {
+        try {
+            
+            const EUR = await Rates.findAll({ where: {id_Currencies: 1}, limit: 10})
+
+            res.json(EUR)
+            
+
+        } catch(e) {
+            res.status(500).json({message: "Something went wrong"})
+
+        }
+    })
+
+router.get(
+    '/USD/graphic',
+    async (req, res) => {
+        try {
+
+
+            const USD = await Rates.findAll({ where: {id_Currencies: 2}, limit: 10})
+
+
+            res.json(USD)
+            
+
+        } catch(e) {
+            res.status(500).json({message: "Something went wrong"})
+
+        }
+    })
+
+module.exports = router

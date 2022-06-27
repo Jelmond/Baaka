@@ -4,6 +4,7 @@ body {
   
   .card {
     background-color: #f4f4f4;
+    max-height: 650px;
     width: 1000px;
     margin: 10px auto;
     box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.7);
@@ -20,6 +21,7 @@ body {
   }
   
   .card-content {
+    align-items: center;
     width: 85%;
     margin: 35px auto;
   }

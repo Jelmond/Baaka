@@ -3,7 +3,7 @@ import {useState, useCallback} from 'react'
 export const useHttp = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const request = useCallback(async (url, method='GET', body = null,headers={}) => {
+    const request = useCallback(async (url, method, body = null,headers={}) => {
         setLoading(true)
         try{
             if (body) {
@@ -15,12 +15,13 @@ export const useHttp = () => {
             const data = await response.json()
 
             if(!response.ok){
-                throw new Error(data.message || 'Something went wrong')}
+                throw new Error(data.message || 'http hook doesnt work')}
 
             setLoading(false)
 
             return data
         } catch (e){
+            console.log('ПУК-ХРБК', e)
             setLoading(false)
             setError(e.message)
             throw e
