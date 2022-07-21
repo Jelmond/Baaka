@@ -1,0 +1,104 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #7BA47D;
+    height: 100%;
+}
+
+.buddy {
+    font-family: 'Montserrat';
+}
+
+.container {
+    width: 1170px;
+    margin: 0 auto;
+    color: #FFFFFF;
+}
+
+.menu {
+    display: flex;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.menu li {
+    margin-right: 87px;
+    list-style-type: none;
+}
+
+.menu{
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.menu li:first-child {
+    font-style: normal;
+    font-weight: 900;
+}
+
+.menu li:hover {
+    border-bottom: 2px solid #4160B0;
+}
+
+.menu li:nth-child(3) {
+    margin-right: 130px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    padding-top: 25px;
+}
+
+.Logo {
+    margin-right: 85px;
+}
+
+.slogan {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 44px;
+}
+
+.paragraph {
+    margin-top: 37px;
+    margin-bottom: 37px;
+    width: 471px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+} /* Почему-то не работает font-weight */
+
+.startButton {
+    border: 0;
+    Width: 277px;
+    Height:82px;
+    border-radius: 35px;
+    background: #4160B0;
+    color: #000000;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.startButton:hover {
+    background-color: #4550B0;
+}
+
+.centralPart {
+    display: flex;
+    margin-top: 151px;
+}
+
+.advert {
+    margin-top: 71px;
+    margin-right: 21px;
+}
+
+.money {
+    margin-left: 30px
+}

@@ -5,7 +5,6 @@ import LinksPage from "./pages/LinksPage"
 import UserPage from './pages/UserPage'
 import AuthPage from "./pages/AuthPage"
 import Navbar from './components/NavigationBar'
-import 'materialize-css'
 import AuthContextProvider from './context/Context'
 import { authenticationStatus} from "./app/IsAuthenticatedAction";
 import {useSelector} from 'react-redux'
@@ -13,6 +12,8 @@ import './pages/UserPageI.css'
 import UserInfo from './pages/UserInfo'
 import GraphicPage from './pages/GraphicPage'
 import './pages/GraphicPage.css'
+import Account_page from './pages/AccountPage'
+import MainWaindow from './pages/MainWindow'
 
 
 
@@ -42,15 +43,18 @@ getCurrencyEuro()
 
   return (
     <AuthContextProvider> 
-        <div className = 'container'>
+        <div className = 'Nav-bar-width'>
             <BrowserRouter>
-                    {<Navbar/>}
+                    {/* {<Navbar/>} */}
                     <Routes>
+                      <Route path='/IBAN_acc_page' exact element={<Account_page/>}></Route>
                         <Route path='/graphicPage' exact element={<GraphicPage/>}></Route>
                         <Route path='userInfo' exact element={<UserInfo/>}></Route>
                         <Route path="/userPage" exact element={<UserPage/>}></Route>
                         <Route path="/links" exact element={<LinksPage/>}/>
-                        <Route path = "/" exact element={isAuthenticated ? <Navigate to ="/links" replace/> : <AuthPage />}/>
+                        <Route path="/" exact element={<MainWaindow/>}></Route>
+                        <Route path="/registration" exact element={<AuthPage/>}></Route>
+                        {/* <Route path = "/" exact element={isAuthenticated ? <Navigate to ="/links" replace/> : <AuthPage />}/> */}
                     </Routes>
                 </BrowserRouter>
         </div>

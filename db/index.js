@@ -7,7 +7,8 @@ const sequelize = new Sequelize('rates', 'root', '', {
 
 const Users = require('./Users')(sequelize);
 const Rates = require('./rates')(sequelize);
-const Currencies = require('./currencies')(sequelize)
+const Accounts = require('./rates')(sequelize);
+const Currencies = require('./currencies')(sequelize);
 
 sequelize.sync().then(result=>console.log('Everything is fine'))
 .catch(err=> console.log(err));
@@ -18,5 +19,6 @@ module.exports = {
     User: Users,
     Rates: Rates,
     Currencies: Currencies,
+    Accounts: Accounts
 
   }

@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const {check, validationResult} = require('express-validator');
 // const { user } = require('../app');
 const {User} = require('../db/index')
-const Sequelize = require('sequelize')
+const Sequelize = require('sequelize');
 
 router.post(
     '/register',
@@ -31,7 +31,7 @@ router.post(
         console.log(User)
 
 
-        const candidate = await User.findOne({Where: {Email: email}}) 
+        const candidate = await User.findOne({where: {Email: email}}) //Херня с регистром 'w'
         console.log(candidate)
         
         if (candidate) {

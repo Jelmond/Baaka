@@ -1,0 +1,28 @@
+.Dropdown {
+    position: absolute;
+    top: 58px;
+    width: 300px;
+    transform: translateX(-45%);
+    background-color: #242526;
+    border: 1px solid #474a4d;
+    border-radius: 8px;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+
+/* Изменить на картинку */
+.Menu-item {
+    
+    height: 50px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border-radius: 8px ;
+    transition: background 500ms;
+    padding: 0.5rem;
+}
+
+.hidden{
+    display: none;
+}

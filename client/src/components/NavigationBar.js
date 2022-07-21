@@ -1,23 +1,10 @@
-import React, { useContext } from "react";
+
 import {NavLink, unstable_HistoryRouter} from "react-router-dom"
-import { AuthContext } from "../context/Context";
-import {useDispatch, useSelector} from 'react-redux'
-import { authenticationStatus, deauthentification } from '../app/IsAuthenticatedAction'
 import UserPage from "../pages/UserPage";
+import { Dropdown } from "./Dropdown";
 
 
-const Navbar = () => {
-    const auth = useContext(AuthContext)
-
-    const authStatus = useSelector(authenticationStatus)
-    const dispatch = useDispatch()
-
-    const logoutHandler = event => {
-        event.preventDefault()
-        auth.logout()
-        dispatch(deauthentification())
-        console.log(authStatus)
-    }
+const Navbar = (props) => {
 
   return(  
     <nav>
@@ -27,10 +14,12 @@ const Navbar = () => {
                 <li><NavLink to='/graphicPage'>Graphic</NavLink></li>
                 <li><NavLink to='/userPage'>User</NavLink></li>
                 <li><NavLink to='/links'>Sass</NavLink></li>
-                <li><a href="/" onClick={logoutHandler}>Logout</a></li>
+                <li><Dropdown></Dropdown></li>
             </ul>
         </div>
     </nav>
 )}
 
 export default Navbar
+
+//<a href="/" onClick={logoutHandler}>Logout</a>

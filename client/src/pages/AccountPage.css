@@ -1,0 +1,90 @@
+/* body {
+    background-color: antiquewhite;
+  }
+  
+  .card {
+    background-color: #f4f4f4;
+    max-height: 650px;
+    width: 1000px;
+    margin: 10px auto;
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.7);
+  }
+  
+  .card-header {
+    overflow: hidden;
+    width: 100%;
+    max-height: 200px;
+  }
+  
+  .card-header img{
+    width: 100%;
+  }
+  
+  .card-content {
+    align-items: center;
+    width: 85%;
+    margin: 35px auto;
+  } */
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.currencyLabel {
+  font-size: 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.phoneLabel {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.countryLabel {
+  font-size: 15px;
+}
+
+.Country-account-select {
+  padding: 10px;
+  text-align: center;
+  width: 200px;
+}
+
+.currency-account-select {
+  text-align: center;
+  width: 200px;
+}
+
+.fname {
+  text-align: center;
+}
+
+.lname {
+  text-align: center;
+}
+
+.phoneInput {
+  text-align: center;
+}
+
+.form-submit-button {
+  margin: 100px auto 0;
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  padding: 7px 18px;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-image: linear-gradient(to right, #f598a8, #f6edb2);
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  transition: .5s;
+}
+
+.form-submit-button:hover {
+  background-position: right center;
+}

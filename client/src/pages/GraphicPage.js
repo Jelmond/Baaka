@@ -20,7 +20,15 @@ const GraphicPage = () => {
     
 
     const [chartData, setChartData] = useState({
-        datasets: [],
+        labels: ['waiting'],
+        datasets: [
+            {
+                label: 'Ну давай, выбирай',
+                data: [0],
+                backgroundColor: 'white',
+                borderColor: 'black',
+            }
+            ]
     })
     
     const [chartOptions, setChartOptions] = useState({})
@@ -70,7 +78,7 @@ const GraphicPage = () => {
                 
             </div>
             <div className="card-content">
-                <form onSubmit={handleSubmiter}>
+                <form className='eee' onSubmit={handleSubmiter}>
                     <label>
                         <select className="browser-default currency-select" value={selectValue} onChange={handleChanger}>
                             <option value="RUB">Рубль</option>

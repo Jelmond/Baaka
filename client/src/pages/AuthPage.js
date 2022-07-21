@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from "react";
 import { AuthContext } from "../context/Context";
 import { useHttp } from "../hooks/http.hook";
 import { useMessage } from "../hooks/message.hook";
+import "./AuthPage.css"
 
 const AuthPage = () => {
     const auth = useContext(AuthContext)
@@ -42,32 +43,37 @@ const AuthPage = () => {
 
     return (
             <div className = "row">  
-                <div className="col s6 offset-s3">
-                    <h1>DAROVA KARTA</h1>
-                    <div className="card blue darken-1">
-                        <div className="card-content white-text">
-                            <span className="card-title">Auth</span>
+                <div className="authpage-container">
+                    <div className="Main">
+                        <div className="card-content">
+                            <span className="card-title">Sign Up</span>
                             <div>
 
                             <div className="input-field">
-                                <input 
-                                    placeholder="Введите email" 
+                                <input className="input-field-input"
+                                    placeholder="write your email" 
                                     id="email" 
                                     type="text"
                                     name="email"
                                     onChange={changeHandler}
                                 />
-                                <label htmlFor="email">Email</label>
                             </div>
                             <div className="input-field">
-                                <input 
-                                    placeholder="Введите пароль" 
+                                <input className="input-field-input"
+                                    placeholder="write your login" 
+                                    id="login" 
+                                    type="text"
+                                    name="login"
+                                />
+                            </div>
+                            <div className="input-field">
+                                <input className="input-field-input"
+                                    placeholder="write your password" 
                                     id="password" 
                                     type="password"
                                     name="password"
                                     onChange={changeHandler}
                                 />
-                                <label htmlFor="email">Пароль</label>
                             </div>
 
                             </div>

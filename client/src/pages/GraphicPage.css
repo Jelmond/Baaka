@@ -1,9 +1,23 @@
 .currency-select {
-    max-width: 145px;
+    width: 90px;
     background-color: #fff5ee;
+    border: black 2px solid;
 }
 
 
 .input-button {
     background-color: #fff5ee;
+}
+
+.eee {
+    display: flex;
+    justify-content: flex-end;
+}
+
+:hover.input-button {
+    filter: brightness(120%)
+}
+
+:hover.currency-select {
+    filter: brightness(120%)
 }
